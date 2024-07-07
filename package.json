@@ -4,7 +4,7 @@
   "main": "js1.js",
   "scripts": {
     "test": "jest",
-    "start-server": "npm run build && node dist/src/app.js",
+    "start-server": "npm run build && node dist/app.js",
     "build": "rm -rf dist/ && tsc",
     "test-coverage": "jest --coverage",
     "start": "tsc && node dist/app.js",

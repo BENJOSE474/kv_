@@ -4,10 +4,10 @@
     "esModuleInterop": true,
     "target": "es6",
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",               // Output directory for compiled file              // Root directory of input TypeScript files
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts", ".env"],
-  "exclude": ["**/*test.ts"]
+  "include": ["src/**/*.ts", ".env"], // Include all TypeScript files in the src directory
+  "exclude": ["**/*test.ts"]          // Exclude test files
 }
