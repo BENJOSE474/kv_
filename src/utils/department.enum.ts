@@ -1,7 +1,7 @@
-export enum Role {
+export enum Deparrtment {
   UI = "UI",
-  UX = "UX",
+  UX= "UX",
   DEVELOPER = "DEVELOPER",
   HR = "HR",
-  QA = "QA",
+  QA = "TESTER",
 }

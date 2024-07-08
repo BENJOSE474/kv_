@@ -1,4 +1,5 @@
 import Address from "../entity/address.entity";
+import Department from "../entity/department.entity";
 import Employee from "../entity/employee.entity";
 import HttpException from "../exceptions/http.exceptions";
 import EmployeeRepository from "../repository/employee.repository";
@@ -22,7 +23,8 @@ class EmployeeService {
     age: number,
     address: any,
     password: string,
-    role: Role
+    role: Role,
+    department_id: number
   ): Promise<Employee> => {
     const newEmployee = new Employee();
     newEmployee.name = name;
@@ -30,8 +32,13 @@ class EmployeeService {
     newEmployee.age = age;
     newEmployee.password = password ? await bcrypt.hash(password, 10) : "";
     newEmployee.role = role;
+    const department = new Department();
+    department.id = department_id;
+
+    newEmployee.department = department;
 
     const newAddress = new Address();
+
     newAddress.line1 = address.line1;
     newAddress.pincode = address.pincode;
 

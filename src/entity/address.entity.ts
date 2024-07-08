@@ -22,7 +22,5 @@ class Address extends AbstractEntity {
   @OneToOne(() => Employee, (employee) => employee.address)
   @JoinColumn()
   employee: Employee;
-  
-  
 }
 export default Address;

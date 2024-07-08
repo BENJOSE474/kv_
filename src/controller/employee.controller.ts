@@ -11,11 +11,12 @@ class EmployeeController {
   constructor(private employeeService: EmployeeService) {
     this.router = Router();
     this.router.get("/",authorize, this.getAllEmployees);
-    this.router.get("/:id", this.getEmployee);
-    this.router.post("/", this.createEmployee);
-    this.router.put("/:id", this.updateEmployee);
-    this.router.delete("/:id", this.deleteEmployee);
-    this.router.post("/login",this.loginEmployee);
+    this.router.get("/:id",authorize, this.getEmployee);
+    this.router.post("/",authorize ,this.createEmployee);
+    this.router.put("/:id", authorize,this.updateEmployee);
+    this.router.delete("/:id",authorize, this.deleteEmployee);
+    this.router.post("/login", this.loginEmployee);
+
   }
 
   public getAllEmployees = async (
@@ -52,22 +53,21 @@ class EmployeeController {
       next(error);
     }
   };
- 
- public loginEmployee=async(
-  req:Request,
-  res:Response,
-  next:NextFunction)=>
-  {
-    const{email,password}=req.body;
-    try{
-      const token=await this.employeeService.loginEmployee(email,password);
-      res.status(200).send ({data:token}); 
-    }
-    catch(error){
-      next(error)
+
+  public loginEmployee = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { email, password } = req.body;
+    try {
+      const token = await this.employeeService.loginEmployee(email, password);
+      res.status(200).send({ data: token });
+    } catch (error) {
+      next(error);
     }
   };
- 
+
   public createEmployee = async (
     req: Request,
     res: Response,
@@ -87,8 +87,10 @@ class EmployeeController {
         employeeDto.age,
         employeeDto.address,
         employeeDto.password,
-        employeeDto.role
+        employeeDto.role,
+        employeeDto.department_id
       );
+      console.log(newEmployee);
       res.status(200).send(newEmployee);
     } catch (error) {
       next(error);

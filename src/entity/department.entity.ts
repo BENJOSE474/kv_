@@ -1,15 +1,16 @@
-import { Column,Entity,OneToMany } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import AbstractEntity from "./abstarct_entity";
-import EmployeeDepartment from "./employeeDepartment.entity";
+import Employee from "./employee.entity";
 
 @Entity()
+class Department extends AbstractEntity {
+  @Column()
+  "name": string;
 
-    class Department extends AbstractEntity{
-        @Column()
-        "name":string;
-
-
-        @OneToMany(()=>EmployeeDepartment,(employeeDepartment)=>employeeDepartment.department)
-        employeeDepartments:EmployeeDepartment[]
-    }
-    export  default Department
+  @OneToMany(() => Employee, (employee) => employee.department, {
+    cascade: true,
+    onDelete: "CASCADE"
+  })
+  employees: Employee[];
+}
+export default Department;

@@ -9,9 +9,9 @@
     "test-coverage": "jest --coverage",
     "start": "tsc && node dist/app.js",
     "migration:create": "npm run build && npx typeorm migration:create",
-    "migration:generate": "npm run build && npx typeorm migration:generate -d dist/src/db/data_source.db.js",
-    "migration:run": "npm run build && npx typeorm migration:run -d dist/src/db/data_source.db.js",
-    "migration:revert": "npm run build && npx typeorm migration:revert -d dist/src/db/data_source.db.js"
+    "migration:generate": "npm run build && npx typeorm migration:generate -d dist/db/data_source.db.js",
+    "migration:run": "npm run build && npx typeorm migration:run -d dist/db/data_source.db.js",
+    "migration:revert": "npm run build && npx typeorm migration:revert -d dist/db/data_source.db.js"
   },
   "keywords": [],
   "author": "",
